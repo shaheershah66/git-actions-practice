@@ -20,8 +20,8 @@ jobs:
         run: echo "job1-greeting=Hello from job1" >> $GITHUB_OUTPUT
         
       - run: | 
-          echo "cleaned=$(echo "${{ github.event.inputs.test }}" | tr -d [])"
-          IFS=',' read -r a playbookList <<< cleaned
+          echo "cleaned=$(echo "${{ github.event.inputs.test }}" | tr -d '[]')"
+          IFS=',' read -r a playbookList <<< $cleaned
           for playbook in "${playbookList[@]}"; do
             echo "$playbook"
           done
