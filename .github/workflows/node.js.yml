@@ -21,7 +21,7 @@ jobs:
         
       - run: |
           cleaned=$(echo "${{ github.event.inputs.test }}" | tr -d '[]')
-          IFS=',' read -r a playbookList <<< $cleaned
+          IFS=',' read -r -a playbookList <<< $cleaned
           for playbook in "${playbookList[@]}"; do
             echo "$playbook"
           done
