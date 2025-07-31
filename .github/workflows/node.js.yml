@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      test:
-        required: true
-        default: "Hello\nhellow2"
 jobs:
   job1:
     runs-on: ubuntu-latest
