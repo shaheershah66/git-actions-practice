@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main
-
+  workflow_dispatch:
+    inputs:
+      test:
+        required: true
+        default: "Hello"
 jobs:
   job1:
     runs-on: ubuntu-latest
