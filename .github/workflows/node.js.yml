@@ -19,7 +19,12 @@ jobs:
         id: job1-var
         run: echo "job1-greeting=Hello from job1" >> $GITHUB_OUTPUT
         
-      - run: echo "Value from test = ${{ github.event.inputs.test }}"
+      - run: | 
+          echo "cleaned=$(echo "${{ github.event.inputs.test }}" | tr -d [])"
+          IFS=',' read -r a playbookList <<< cleaned
+          for playbook in "${playbookList[@]}"; do
+            echo "$playbook"
+          done
   job2:
     needs: job1
     runs-on: ubuntu-latest
