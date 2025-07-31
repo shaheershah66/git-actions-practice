@@ -19,7 +19,8 @@ jobs:
         id: job1-var
         run: echo "job1-greeting=Hello from job1" >> $GITHUB_OUTPUT
         
-      - run: | 
+      - run: |
+          echo "${{ github.event.inputs.test }}"
           echo "cleaned=$(echo "${{ github.event.inputs.test }}" | tr -d '[]')"
           IFS=',' read -r a playbookList <<< $cleaned
           for playbook in "${playbookList[@]}"; do
