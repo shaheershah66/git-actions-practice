@@ -8,7 +8,7 @@ on:
     inputs:
      test:
        required: true
-       default: "[hello,world]"
+       default: '[hello,world]'
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -20,7 +20,6 @@ jobs:
         run: echo "job1-greeting=Hello from job1" >> $GITHUB_OUTPUT
         
       - run: |
-          echo "${{ github.event.inputs.test }}"
           cleaned=$(echo "${{ github.event.inputs.test }}" | tr -d '[]')
           IFS=',' read -r a playbookList <<< $cleaned
           for playbook in "${playbookList[@]}"; do
